@@ -28,6 +28,10 @@ class App extends Component {
     alert('Hello!');
   }
 
+  myCallback = (dataFromChild) => {
+        this.setState({ viewAlta: dataFromChild });
+    }
+
   render() {
     const viewAlta = this.state.viewAlta;
     let divToShow;
@@ -39,7 +43,7 @@ class App extends Component {
     }
     return (
       <div>
-        <NavBarTest state=""/>
+        <NavBarTest callbackFromParent={this.myCallback}/>
         {divToShow}
       </div>
 

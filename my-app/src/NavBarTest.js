@@ -21,23 +21,33 @@ class NavBarTest extends Component {
     }
   }*/
 
+  someFn = () => {
+        var listInfo = true;
+        this.props.callbackFromParent(listInfo);
+    }
+
+  handleHomeClick = () => {
+        var listInfo = false;
+        this.props.callbackFromParent(listInfo);
+    }
+
   render() {
     return (
       <div className="App">
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#home" onClick={this.props.handleHomeClick}>InvestIT</a>
+              <a href="#home">InvestIT</a>
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
             <NavDropdown eventKey={3} title="Entidades administradoras" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Alta</MenuItem>
+              <MenuItem eventKey={3.1}  onSelect={this.handleHomeClick}>Alta</MenuItem>
               <MenuItem eventKey={3.2}>Listado</MenuItem>
               <MenuItem eventKey={3.3}>Usuarios</MenuItem>
             </NavDropdown>
             <NavDropdown eventKey={3} title="Empresas emisoras" id="basic-nav-dropdown">
-              <MenuItem id={1} eventKey={3.1} onSelect={this.props.handleAltaClick}>Alta</MenuItem>
+              <MenuItem id={1} eventKey={3.1} onSelect={this.someFn}>Alta</MenuItem>
               <MenuItem eventKey={3.2}>Listado</MenuItem>
               <MenuItem eventKey={3.3}>Usuarios</MenuItem>
             </NavDropdown>
@@ -53,7 +63,7 @@ class NavBarTest extends Component {
               <MenuItem eventKey={3.2}>Monedas</MenuItem>
             </NavDropdown>
           </Nav>
-        </Navbar>;
+        </Navbar>
       </div>
     );
   }
